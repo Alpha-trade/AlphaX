@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stock Predictor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { padding: 10px; width: 250px; }
+        input[type="submit"] { padding: 10px 20px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 30px; padding: 20px; border: 1px solid #ddd; display: inline-block; }
+        .buy { color: green; }
+        .sell { color: red; }
+        .hold { color: grey; }
+    </style>
+</head>
+<body>
+    <h1>AI Stock Predictor</h1>
+    <p>Enter an Indian stock ticker symbol (e.g., RELIANCE.NS, INFY.NS) to get a trading signal.</p>
+
+    <form action="/predict" method="post">
+        <input type="text" name="ticker" placeholder="Enter stock ticker..." required>
+        <input type="submit" value="Get Signal">
+    </form>
+
+    {% if signal %}
+    <div class="result">
+        <h2>Prediction for {{ ticker }}</h2>
+        <p>The signal is: <strong class="{{ signal|lower }}">{{ signal }}</strong></p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
